@@ -4,7 +4,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Live Chat App</h1>
+      <Button></Button>
     </div>
   );
 }
