@@ -1,51 +1,86 @@
 import React, { useState } from 'react'
-import { VStack, FormControl, FormLabel, Input } from '@chakra-ui/react';
+import { VStack, FormControl, FormLabel, Input, InputRightElement, InputGroup, Button } from '@chakra-ui/react';
 
 export default function Signup() {
+    const [show, setShow] = useState(false);
     const [name, setName] = useState();
     const [email, setEmail] = useState();
     const [confirmPassword, setConfirmPassword] = useState();
     const [password, setPassword] = useState();
     const [pic, setPic] = useState();
+    const [picLoading,setPicLoading] = useState(false);
+    const handleClick = () => { setShow(!show) }
+    const postDetails = (pics) => {
 
+    }
+    const submitHandler = ()=>{
+
+    }
     return (
         <VStack>
-            <FormControl isRequired>
+            <FormControl id="first-name" isRequired>
                 <FormLabel>Name</FormLabel>
                 <Input
-                    placeholder='Enter Your Name'
+                    placeholder="Enter Your Name"
                     onChange={(e) => setName(e.target.value)}
                 />
             </FormControl>
-            <FormControl isRequired>
-                <FormLabel>Email</FormLabel>
+            <FormControl id="email" isRequired>
+                <FormLabel>Email Address</FormLabel>
                 <Input
-                    placeholder='Enter Your Email'
+                    type="email"
+                    placeholder="Enter Your Email Address"
                     onChange={(e) => setEmail(e.target.value)}
                 />
             </FormControl>
-            <FormControl isRequired>
-                <FormLabel>ConfirmPassword</FormLabel>
-                <Input
-                    placeholder='Enter Your ConfirmPassword'
-                    onChange={(e) => setConfirmPassword(e.target.value)}
-                />
-            </FormControl>
-            <FormControl isRequired>
+            <FormControl id="password" isRequired>
                 <FormLabel>Password</FormLabel>
+                <InputGroup size="md">
+                    <Input
+                        type={show ? "text" : "password"}
+                        placeholder="Enter Password"
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                    <InputRightElement width="4.5rem">
+                        <Button h="1.75rem" size="sm" onClick={handleClick}>
+                            {show ? "Hide" : "Show"}
+                        </Button>
+                    </InputRightElement>
+                </InputGroup>
+            </FormControl>
+            <FormControl id="password" isRequired>
+                <FormLabel>Confirm Password</FormLabel>
+                <InputGroup size="md">
+                    <Input
+                        type={show ? "text" : "password"}
+                        placeholder="Confirm password"
+                        onChange={(e) => setConfirmPassword(e.target.value)}
+                    />
+                    <InputRightElement width="4.5rem">
+                        <Button h="1.75rem" size="sm" onClick={handleClick}>
+                            {show ? "Hide" : "Show"}
+                        </Button>
+                    </InputRightElement>
+                </InputGroup>
+            </FormControl>
+            <FormControl id="pic">
+                <FormLabel>Upload your Picture</FormLabel>
                 <Input
-                    placeholder='Enter Your Password'
-                    onChange={(e) => setPassword(e.target.value)}
+                    type="file"
+                    p={1.5}
+                    accept="image/*"
+                    onChange={(e) => postDetails(e.target.files[0])}
                 />
             </FormControl>
-            <FormControl isRequired>
-                <FormLabel>Pic</FormLabel>
-                <Input
-                    placeholder='Choose Your Pic'
-                    onChange={(e) => setPic(e.target.value)}
-                />
-            </FormControl>
-
+            <Button
+                colorScheme="blue"
+                width="100%"
+                style={{ marginTop: 15 }}
+                onClick={submitHandler}
+                isLoading={picLoading}
+            >
+                Sign Up
+            </Button>
         </VStack>
     )
 }
