@@ -1,3 +1,10 @@
-* {
-    margin: 0%;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700;900&family=Ubuntu+Mono:wght@400;700&family=Work+Sans:wght@300&display=swap');
+
+.App{
+    min-height: 100vh;
+    display: flex;
+    background-image: url('https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8YmFja2dyb3VuZHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60');
+    background-size: cover;
+    background-position: center;
+    color: black;
 }
